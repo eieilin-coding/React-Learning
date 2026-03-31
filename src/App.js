@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar/index';
 import PostsList from './components/PostsList/index';
+import PostForm from './components/PostForm/index';
 import Modal from './components/Modal/index';
 import {useState} from 'react';
 
@@ -15,14 +16,13 @@ let [posts, setPosts] = useState([
   {
     id : 2,
     title: 'Second post'
-  },
-  {
-    id : 3,
-    title: 'Third post'
   }
 ]);
 
-  
+let addPost = (post) => {
+  setPosts((prevState => [...prevState, post]))
+  setShowModal(false)
+} 
 
   return (
     <>
@@ -32,10 +32,8 @@ let [posts, setPosts] = useState([
       <h1>Zoom class is available now.</h1>
             <p>Feel free to <a href="">join</a> here</p>
     </Modal> */}
-    {showModal && <Modal danger>
-      <h1>Terms and Conditions</h1>
-      <p>Lorem ipsum dolor sit amdet lakid. Feace the fear! You will win.</p>
-      <button onClick={() => setShowModal(false)}>close</button>
+    {showModal && <Modal  setShowModal={setShowModal} >
+      <PostForm addPost={addPost} />
     </Modal>}
     </>
   );

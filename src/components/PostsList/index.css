@@ -6,10 +6,9 @@
 }
 
 .postList .single-post {
-    flex: 1;
     margin: 20px;
-    width: 300px;
-    height: 300px;
+    flex-basis: 200px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
